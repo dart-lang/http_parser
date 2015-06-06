@@ -1,3 +1,7 @@
+## 0.0.2+6
+
+* Add more detail to the readme.
+
 ## 0.0.2+5
 
 * Widen the version constraint on the `collection` package.
