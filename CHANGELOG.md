@@ -1,3 +1,7 @@
+## 3.1.4
+
+* Set min SDK to `2.4.0`.
+
 ## 3.1.3
 
 * Set max SDK version to `<3.0.0`, and adjust other dependencies.

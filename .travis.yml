@@ -1,13 +1,13 @@
 language: dart
 
 dart:
-  - 2.3.0
+  - 2.4.0
   - dev
 
 dart_task:
   - test: --platform vm
     xvfb: false
-  - test: --platform firefox
+  - test: --platform chrome
   - dartanalyzer: --fatal-infos --fatal-warnings .
 
 matrix:
