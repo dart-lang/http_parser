@@ -33,16 +33,20 @@ class ChunkedCodingDecoder extends Converter<List<int>, List<int>> {
 /// A conversion sink for the chunked transfer encoding.
 class _Sink extends ByteConversionSinkBase {
   /// The underlying sink to which decoded byte arrays will be passed.
-  final Sink<List<int>> _sink;
+  late final Sink<List<int>> _sink;
 
   /// The current state of the sink's parsing.
   var _state = _State.boundary;
 
   /// The size of the chunk being parsed, or `null` if the size hasn't been
   /// parsed yet.
-  int _size;
+  late int _size;
 
-  _Sink(this._sink);
+  _Sink(Sink<List<int>>? sink) {
+    if (sink != null) {
+      _sink = sink;
+    }
+  }
 
   @override
   void add(List<int> chunk) => addSlice(chunk, 0, chunk.length, false);
@@ -60,7 +64,7 @@ class _Sink extends ByteConversionSinkBase {
 
   /// Like [close], but includes [chunk] and [index] in the [FormatException] if
   /// one is thrown.
-  void _close([List<int> chunk, int index]) {
+  void _close([List<int>? chunk, int? index]) {
     if (_state != _State.end) {
       throw FormatException('Input ended unexpectedly.', chunk, index);
     }
