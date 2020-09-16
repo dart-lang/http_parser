@@ -39,8 +39,9 @@ class _Sink extends ByteConversionSinkBase {
   /// The current state of the sink's parsing.
   var _state = _State.boundary;
 
-  /// The size of the chunk being parsed, or `null` if the size hasn't been
-  /// parsed yet.
+  /// The size of the chunk being parsed.
+  ///
+  /// Only assigned and used within [_decode].
   late int _size;
 
   _Sink(this._sink);
