@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:typed_data';
@@ -18,7 +19,7 @@ class ChunkedCodingDecoder extends Converter<List<int>, List<int>> {
 
   @override
   List<int> convert(List<int> input) {
-    final sink = _Sink(null);
+    final sink = _Sink(StreamController());
     final output = sink._decode(input, 0, input.length);
     if (sink._state == _State.end) return output;
 
@@ -33,7 +34,7 @@ class ChunkedCodingDecoder extends Converter<List<int>, List<int>> {
 /// A conversion sink for the chunked transfer encoding.
 class _Sink extends ByteConversionSinkBase {
   /// The underlying sink to which decoded byte arrays will be passed.
-  late final Sink<List<int>> _sink;
+  final Sink<List<int>> _sink;
 
   /// The current state of the sink's parsing.
   var _state = _State.boundary;
@@ -42,11 +43,7 @@ class _Sink extends ByteConversionSinkBase {
   /// parsed yet.
   late int _size;
 
-  _Sink(Sink<List<int>>? sink) {
-    if (sink != null) {
-      _sink = sink;
-    }
-  }
+  _Sink(this._sink);
 
   @override
   void add(List<int> chunk) => addSlice(chunk, 0, chunk.length, false);
