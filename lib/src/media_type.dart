@@ -72,6 +72,9 @@ class MediaType {
         }
 
         scanner.expectDone();
+        if(type=="application"&& subtype=="json" && parameters["charset"]==null){
+            parameters["charset"]="utf-8";
+        }
         return MediaType(type, subtype, parameters);
       });
 
