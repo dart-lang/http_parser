@@ -1,3 +1,11 @@
+## 4.0.1
+
+* Remove dependency on `package:charcode`.
+
+## 4.0.0
+
+* Stable null safety stable release.
+
 ## 4.0.0-nullsafety
 
 * Migrate to null safety.
