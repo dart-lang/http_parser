@@ -72,7 +72,6 @@ class MediaType {
         }
 
         scanner.expectDone();
-
         return MediaType(type, subtype, parameters);
       });
 
