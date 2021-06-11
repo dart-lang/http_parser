@@ -123,8 +123,8 @@ class MediaType {
       parameters = Map.from(this.parameters);
       parameters.addAll(newParameters);
     }
-    if(type=="application"&& subtype=="json" && parameters["charset"]==null){
-      parameters["charset"]="utf-8";
+    if(type=='application'&& subtype=='json' && parameters['charset']==null){
+      parameters['charset']='utf-8';
     }   
     return MediaType(type, subtype, parameters);
   }
