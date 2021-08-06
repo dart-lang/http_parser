@@ -80,6 +80,11 @@ void main() {
       expect(type.parameters, containsPair('foo', 'bar'));
       expect(type.parameters, containsPair('baz', 'bang'));
     });
+
+    test('sets the charset to utf-8 if the mediatype is application/json', () {
+      final type = MediaType.parse('application/json');
+      expect(type.parameters, equals({'charset': 'utf-8'}));
+    });
   });
 
   group('change', () {
