@@ -80,6 +80,18 @@ void main() {
       expect(type.parameters, containsPair('foo', 'bar'));
       expect(type.parameters, containsPair('baz', 'bang'));
     });
+
+    test('allow finalize with semicolon', () {
+      final type = MediaType.parse('text/xml; charset=UTF-8;');
+      expect(type.mimeType, equals('text/xml'));
+      expect(type.parameters, equals({'charset': 'UTF-8'}));
+    });
+
+    test('allow trailing white space after semicolon', () {
+      final type = MediaType.parse('text/xml; charset=UTF-8;  ');
+      expect(type.mimeType, equals('text/xml'));
+      expect(type.parameters, equals({'charset': 'UTF-8'}));
+    });
   });
 
   group('change', () {

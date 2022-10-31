@@ -56,6 +56,7 @@ class MediaType {
         final parameters = <String, String>{};
         while (scanner.scan(';')) {
           scanner.scan(whitespace);
+          if (scanner.isDone) break;
           scanner.expect(token);
           final attribute = scanner.lastMatch![0]!;
           scanner.expect('=');
