@@ -9,6 +9,6 @@ updates:
     labels:
       - autosubmit
     groups:
-      github-actions:
+      dependencies:
         patterns:
           - "*"
