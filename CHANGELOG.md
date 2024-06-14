@@ -1,4 +1,4 @@
-## 4.0.3
+## 4.1.0
 
 * `CaseInsensitiveMap`: added constructor `fromEntries`.
 * Require `package:collection` `^1.19.0`
