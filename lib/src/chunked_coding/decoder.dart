@@ -207,7 +207,7 @@ enum _State {
   // The parser has parsed all the bytes in a chunk body and the CR that follows
   // it, but not the LF after that.
   //
-  // Transitions to [bounday].
+  // Transitions to [boundary].
   bodyBeforeLF('body before LF'),
 
   /// The parser has parsed the final empty chunk but not the CR LF sequence
